@@ -26,7 +26,8 @@ class CreateRecetasTable extends Migration
             $table->text('preparacion');
             $table->string('imagen');
             $table->foreignId('user_id')->references('id')->on('users')->comment('El usuario que crea la receta');
-            $table->foreignId('categoria_id')->index('id')->on('categoria_receta');
+            $table->foreignId('categoria_id')->references('id')->on('categoria_receta');
+            //$table->foreignId('categoria_id')->index('id')->on('categoria_receta');
             $table->timestamps();
         });
     }
@@ -38,8 +39,10 @@ class CreateRecetasTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('recetas');
+
         Schema::dropIfExists('categoria_receta');
 
-        Schema::dropIfExists('recetas');
+
     }
 }

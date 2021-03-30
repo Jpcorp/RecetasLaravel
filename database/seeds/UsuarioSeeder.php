@@ -22,5 +22,14 @@ class UsuarioSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Mane',
+            'email' => 'correo2@correo.com',
+            'password' => Hash::make('12345678'),
+            'url' => 'http://codigomane.com',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }
