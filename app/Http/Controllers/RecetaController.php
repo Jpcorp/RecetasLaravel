@@ -73,18 +73,18 @@ class RecetaController extends Controller
         $img = Image::make( public_path("storage/{$url_imagen}"))->fit(1000, 500);
         $img->save();
 
-        //almacenar datos
-        DB::table('recetas')->insert([
-            'titulo' => $data['titulo'],
-            'ingredientes' => $data['ingredientes'],
-            'imagen' => $url_imagen,
-            'user_id' => Auth::user()->id,
-            'categoria_id' => $data['categoria'],
-            'preparacion' => $data['preparacion'],
-        ]);
+        //almacenar datos sin modelo
+        // DB::table('recetas')->insert([
+        //     'titulo' => $data['titulo'],
+        //     'ingredientes' => $data['ingredientes'],
+        //     'imagen' => $url_imagen,
+        //     'user_id' => Auth::user()->id,
+        //     'categoria_id' => $data['categoria'],
+        //     'preparacion' => $data['preparacion'],
+        // ]);
 
-        //almacenar en la base de datos con modelo
-        auth()->user()->userToRecetas->create([
+        //a lmacenar en la base de datos con modelo
+        auth()->user()->userToRecetas()->create([
             'titulo' => $data['titulo'],
             'ingredientes' => $data['ingredientes'],
             'imagen' => $url_imagen,
@@ -103,7 +103,15 @@ class RecetaController extends Controller
      */
     public function show(Receta $receta)
     {
-        //
+        //algunos metodos para obtener los datos
+        //$receta = Receta::find($receta);
+        //si no lo encuentra marca como error
+        //$receta = Receta::findOrFail($receta);
+        //return view("recetas.show")->with('receta', $receta); //de forma automatica busca la vista
+
+        //forma mas abreviada de mostrar data
+        return view("recetas.show", compact('receta'));
+
     }
 
     /**

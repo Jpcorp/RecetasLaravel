@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receta extends Model
 {
+    protected $fillable = [
+        'titulo', 'ingredientes', 'imagen', 'categoria_id', 'preparacion',
+    ];
+
     //Obtiene la categoria de la receta via FK
     public function categoria()
     {
