@@ -14,7 +14,9 @@ class RecetaController extends Controller
     //Function para proteger las acciones requieren autenticarse antes
     public function __construct()
     {
-        $this->middleware('auth');
+        //con esta sintaxis protegemos la pagina con autenticacion
+        $this->middleware('auth', ['except' => ['show', 'create']]);
+        //con el mi middlware podemos proteger nuestras rutas  solicitando autenticacion
     }
     /**
      * Display a listing of the resource.

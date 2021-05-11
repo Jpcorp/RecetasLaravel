@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('buttons')
+    <a href="{{ route('recetas.index') }}" class="btn btn-primary mr-2">volver</a>
+@endsection
+
 @section('content')
 
     {{-- $receta --}}
@@ -18,13 +22,18 @@
             </p>
             <p>
                 <span class="font-weight-bold text-primary mb-2">Fecha:</span>
-                {{ $receta->created_at }}
+                @php
+                    $fecha = $receta->created_at
+                @endphp
+                <fecha-receta fecha="{{ $fecha }}"></fecha-receta>
             </p>
             <p>
                 <span class="font-weight-bold text-primary">Autor:</span>
                 {{-- TODO: mostrar el usuario --}}
-                {{ $receta->user_id }}
+
+                {{ $receta->autor->name }}
             </p>
+
             <p>
                 <span class="font-weight-bold text-primary">Ingredientes:</span>
                 {!! $receta->ingredientes !!}
