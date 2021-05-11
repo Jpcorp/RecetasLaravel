@@ -23,9 +23,10 @@
                         <td>{{ $receta->titulo }}</td>
                         <td>{{ $receta->categoria->nombre }}</td>
                         <td>
-                            <a href="" class="btn btn-danger mr-1">Eliminar</a>
-                            <a href="" class="btn btn-dark mr-1">Editar</a>
-                            <a href="" class="btn btn-success mr-1">ver</a>
+                            <a href="#" class="btn btn-danger mr-1">Eliminar</a>
+                        <a href="{{ route('recetas.edit', ['receta' => $receta->id ] ) }}" class="btn btn-dark mr-1">Editar</a>
+                            <!-- a href="{{ action('RecetaController@show', ['receta' => $receta->id ]) }}" class="btn btn-success mr-1">ver</a -->
+                            <a href="{{ route('recetas.show', ['receta' => $receta->id ]) }}" class="btn btn-success mr-1">ver</a>
                         </td>
                     <tr>
                 @endforeach

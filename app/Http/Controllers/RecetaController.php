@@ -124,7 +124,12 @@ class RecetaController extends Controller
      */
     public function edit(Receta $receta)
     {
-        //
+        //obtengo todas las categorias
+        $categorias = CategoriaReceta::all(['id', 'nombre']);
+
+        //agrego fuente de datos a las vista
+        return view('recetas.edit', compact('categorias', 'receta'));
+
     }
 
     /**
@@ -137,6 +142,7 @@ class RecetaController extends Controller
     public function update(Request $request, Receta $receta)
     {
         //
+        return "editando...";
     }
 
     /**

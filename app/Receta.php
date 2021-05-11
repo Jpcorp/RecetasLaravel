@@ -19,6 +19,6 @@ class Receta extends Model
     //Obtiene la informacion por via PK
     public function autor()
     {
-        return $this->belongsTo(User::class, 'user_id');//fk de la tabla
+        return $this->belongsTo(User::class, 'user_id') ;//fk de la tabla
     }
 }
