@@ -184,11 +184,16 @@ class RecetaController extends Controller
      */
     public function destroy(Receta $receta)
     {
+        $this->authorize('delete', $receta);
+
+        return "Eli->".auth()->user()->id.' - '.$receta->user_id;
+
+
         //revisar la policy
-        $this->authorize('destroy', $receta);
+
 
         //elimino la receta
-        $receta->delete();
+        //$receta->delete();
 
         return redirect()->action('RecetaController@index');
     }

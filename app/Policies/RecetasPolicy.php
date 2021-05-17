@@ -5,6 +5,8 @@ namespace App\Policies;
 use App\Receta;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Log;
+
 
 class RecetasPolicy
 {
@@ -66,6 +68,7 @@ class RecetasPolicy
      */
     public function delete(User $user, Receta $receta)
     {
+        Log::info('user id: '.$user->id.' '.'receta user id'.$receta->user_id);
         //revisa si el usuario autenticado es el mismo que creo la receta
         return $user->id === $receta->user_id;
     }

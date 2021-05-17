@@ -22,12 +22,37 @@ export default {
                 cancelButtonText: 'No'
 
             }).then((result) => {
-                if (result.isConfirmed) {
-                    this.$swal({
-                        title: 'Deleted!',
-                        text: 'Your file has been deleted.',
-                        icon: 'success'
-                    })
+                if (result.value) {
+
+                    const params = {
+                        id: this.recetaId
+                    }
+
+                    //enviar peticion al servidor
+                    axios.post(`/recetas/${this.recetaId}`, {params, _method: 'delete'})
+                        .then(respuesta => {
+
+                            console.log(respuesta);
+
+                            this.$swal({
+                                title: 'Deleted!',
+                                text: 'Your file has been deleted.',
+                                icon: 'success'
+                            })
+
+                            //eliminar receta del DOM
+                            //console.log(this.$el);
+                            this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+                        })
+                        .catch(error => {
+                            ///console.log(error);
+                            console.log(error.status);
+                            this.$swal({
+                                title: 'No se pudo eliminar!',
+                                text: 'Verifique permisos.',
+                                icon: 'error'
+                            })
+                        });
                 }
             })
         }
