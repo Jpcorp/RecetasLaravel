@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($recetas as $receta)
+                @foreach($recetas ?? '' as $receta)
                     <tr>
                         <td>{{ $receta->titulo }}</td>
                         <td>{{ $receta->categoria->nombre }}</td>

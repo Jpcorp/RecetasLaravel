@@ -43,5 +43,11 @@ class CategoriasSeeder extends Seeder
             'updated_at' => date('Y-m-d H:m:s'),
         ]);
 
+        DB::table('categoria_recetas')->insert([
+            'nombre' => 'Chatarra',
+            'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s'),
+        ]);
+
     }
 }

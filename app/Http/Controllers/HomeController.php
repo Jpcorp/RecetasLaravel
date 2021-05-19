@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect()->action('RecetaController@index');
+        //return view('home');
+
     }
 }

@@ -29,6 +29,7 @@ class RecetaController extends Controller
         $recetas = auth()->user()->userToRecetas;
 
         return view("recetas.index")->with('recetas', $recetas);
+
     }
 
     /**
@@ -184,16 +185,11 @@ class RecetaController extends Controller
      */
     public function destroy(Receta $receta)
     {
-        $this->authorize('delete', $receta);
-
-        return "Eli->".auth()->user()->id.' - '.$receta->user_id;
-
-
         //revisar la policy
-
-
+        $this->authorize('delete', $receta);
+        //return "Eli->".auth()->user()->id.' - '.$receta->user_id;
         //elimino la receta
-        //$receta->delete();
+        $receta->delete();
 
         return redirect()->action('RecetaController@index');
     }
