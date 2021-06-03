@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('buttons')
-    <a href="{{ route('recetas.create') }}" class="btn btn-primary mr-2">Crear receta</a>
+    {{-- Auth::user() --}}
+    @include('ui.navegacion')
+
 @endsection
 
 @section('content')
@@ -18,19 +20,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($recetas ?? '' as $receta)
-                    <tr>
-                        <td>{{ $receta->titulo }}</td>
-                        <td>{{ $receta->categoria->nombre }}</td>
-                        <td>
-                            <eliminar-receta receta-id={{ $receta->id }}></eliminar-receta>
-                            <a href="{{ route('recetas.edit', ['receta' => $receta->id ] ) }}" class="btn btn-dark b-block w-100 mb-2">Editar</a>
-                            <!-- a href="{{ action('RecetaController@show', ['receta' => $receta->id ]) }}" class="btn btn-success mr-1">ver</a -->
-                            <a href="{{ route('recetas.show', ['receta' => $receta->id ]) }}" class="btn btn-success b-block w-100 mb-2">ver</a>
-                        </td>
-                    <tr>
-                @endforeach
-
+                @if(count($recetas) >= 1)
+                    @foreach($recetas ?? '' as $receta)
+                        <tr>
+                            <td>{{ $receta->titulo }}</td>
+                            <td>{{ $receta->categoria->nombre }}</td>
+                            <td>
+                                <eliminar-receta receta-id={{ $receta->id }}></eliminar-receta>
+                                <a href="{{ route('recetas.edit', ['receta' => $receta->id ] ) }}" class="btn btn-dark b-block w-100 mb-2">Editar</a>
+                                <!-- a href="{{ action('RecetaController@show', ['receta' => $receta->id ]) }}" class="btn btn-success mr-1">ver</a -->
+                                <a href="{{ route('recetas.show', ['receta' => $receta->id ]) }}" class="btn btn-success b-block w-100 mb-2">ver</a>
+                            </td>
+                        <tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="4">No hay datos</td></tr>
+                @endif
             </tbody>
         </table>
     </div>
