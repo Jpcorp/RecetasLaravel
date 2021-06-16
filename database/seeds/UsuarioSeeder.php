@@ -22,6 +22,13 @@ class UsuarioSeeder extends Seeder
             'url' => 'http://codigojuan.com'
         ]);
 
+        $user2 = User::create([
+            'name' => 'Juan Pedro',
+            'email' => 'ju.guinart.fernandez@gmail.com',
+            'password' => Hash::make('ju.guinart.fernandez@gmail.com'),
+            'url' => 'http://www.cnn.cl'
+        ]);
+
         //$user->userToPerfil()->create();
 
     }

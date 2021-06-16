@@ -45,5 +45,6 @@
         </div>
     </article>
 
+    <like-buttom></like-buttom>
 
 @endsection

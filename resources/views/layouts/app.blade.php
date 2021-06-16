@@ -61,6 +61,10 @@
                                      href="{{ route('perfiles.show', ['perfil' => Auth::user()->id ]) }}">
                                      {{ 'Ver perfil' }}
                                     </a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('recetas.index') }}">
+                                        {{ 'Ver recetas' }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

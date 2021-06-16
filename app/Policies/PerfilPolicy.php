@@ -2,13 +2,11 @@
 
 namespace App\Policies;
 
-use App\Receta;
+use App\Perfil;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Log;
 
-
-class RecetasPolicy
+class PerfilPolicy
 {
     use HandlesAuthorization;
 
@@ -27,13 +25,13 @@ class RecetasPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Receta  $receta
+     * @param  \App\Perfil  $perfil
      * @return mixed
      */
-    public function view(User $user, Receta $receta)
+    public function view(User $user, Perfil $perfil)
     {
-        //
-        return $user->id === $receta->user_id;
+        //sirve para ciertas vista
+        $user->id === $perfil->user_id;
     }
 
     /**
@@ -51,37 +49,35 @@ class RecetasPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Receta  $receta
+     * @param  \App\Perfil  $perfil
      * @return mixed
      */
-    public function update(User $user, Receta $receta)
+    public function update(User $user, Perfil $perfil)
     {
-        //revisa si el usuario autenticado es el mismo que creo la receta
-        return $user->id === $receta->user_id;
+        //verifica si el usuario autenticado es el mismo que desea actualizar
+        $user->id === $perfil->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Receta  $receta
+     * @param  \App\Perfil  $perfil
      * @return mixed
      */
-    public function delete(User $user, Receta $receta)
+    public function delete(User $user, Perfil $perfil)
     {
-        Log::info('user id: '.$user->id.' '.'receta user id'.$receta->user_id);
-        //revisa si el usuario autenticado es el mismo que creo la receta
-        return $user->id === $receta->user_id;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Receta  $receta
+     * @param  \App\Perfil  $perfil
      * @return mixed
      */
-    public function restore(User $user, Receta $receta)
+    public function restore(User $user, Perfil $perfil)
     {
         //
     }
@@ -90,10 +86,10 @@ class RecetasPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Receta  $receta
+     * @param  \App\Perfil  $perfil
      * @return mixed
      */
-    public function forceDelete(User $user, Receta $receta)
+    public function forceDelete(User $user, Perfil $perfil)
     {
         //
     }
