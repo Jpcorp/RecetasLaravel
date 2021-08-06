@@ -1996,6 +1996,66 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LikeButtom.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LikeButtom.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  //variable pasadas vu.js
+  props: ['recetaId', 'like', 'likes'],
+  data: function data() {
+    return {
+      isActive: this.like,
+      totalLikes: this.likes
+    };
+  },
+  //cuando el compenente esta cargado
+  mounted: function mounted() {
+    console.log(this.like);
+    console.log(this.likes);
+  },
+  //metodos
+  methods: {
+    likeReceta: function likeReceta() {
+      var _this = this;
+
+      console.log('Diste me gusta ', this.recetaId);
+      axios.post('/recetas/like/' + this.recetaId).then(function (respuesta) {
+        if (respuesta.data.attached.length > 0) {
+          _this.$data.totalLikes++;
+        } else {
+          _this.$data.totalLikes--;
+        }
+
+        _this.isActive = !_this.isActive;
+      })["catch"](function (error) {
+        if (error.response.status === 401) {
+          window.location = '/register';
+        }
+      });
+    }
+  },
+  computed: {
+    cantidadLikes: function cantidadLikes() {
+      return this.totalLikes;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -63572,16 +63632,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("span", {
+      staticClass: "like-btn",
+      class: { "like-active": _vm.isActive },
+      on: { click: _vm.likeReceta }
+    }),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.cantidadLikes) + " Les gusto esta receta")])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("span", { staticClass: "like-btn" })])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -75856,9 +75917,6 @@ console.log(Vue.prototype);
 var app = new Vue({
   el: '#app'
 });
-$('.like-btn').on('click', function () {
-  $(this).toggleClass('like-active');
-});
 
 /***/ }),
 
@@ -76058,15 +76116,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LikeButtom_vue_vue_type_template_id_2a8e0e53___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LikeButtom.vue?vue&type=template&id=2a8e0e53& */ "./resources/js/components/LikeButtom.vue?vue&type=template&id=2a8e0e53&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _LikeButtom_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LikeButtom.vue?vue&type=script&lang=js& */ "./resources/js/components/LikeButtom.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LikeButtom_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _LikeButtom_vue_vue_type_template_id_2a8e0e53___WEBPACK_IMPORTED_MODULE_0__["render"],
   _LikeButtom_vue_vue_type_template_id_2a8e0e53___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -76080,6 +76140,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/LikeButtom.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LikeButtom.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/LikeButtom.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeButtom_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./LikeButtom.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LikeButtom.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeButtom_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\CategoriaReceta;
+use App\User;
 use App\Receta;
+use App\CategoriaReceta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -29,10 +30,17 @@ class RecetaController extends Controller
         //$recetas = auth()->user()->userToRecetas;
 
         //Recetas con paginacion
-        $usuario = auth()->user()->id;
-        $recetas = Receta::where('user_id', $usuario)->paginate(2);
+        $usuario = auth()->user();
 
-        return view("recetas.index")->with('recetas', $recetas);
+        $meGusta = auth()->user()->meGusta;
+
+        $recetas = Receta::where('user_id', $usuario->id)->paginate(4);
+
+
+
+        return view("recetas.index")
+                ->with('recetas', $recetas)
+                ->with('usuario', $usuario);
 
     }
 
@@ -116,8 +124,13 @@ class RecetaController extends Controller
         //$receta = Receta::findOrFail($receta);
         //return view("recetas.show")->with('receta', $receta); //de forma automatica busca la vista
 
+        //obtener si el usuario actual le gusta la receta y esta autenticado
+        $like = ( auth()->user() ) ? auth()->user()->meGusta->contains($receta->id) : false;
+
+        $likes = $receta->likes->count();
+
         //forma mas abreviada de mostrar data
-        return view("recetas.show", compact('receta'));
+        return view("recetas.show", compact('receta', 'like', 'likes'));
 
     }
 

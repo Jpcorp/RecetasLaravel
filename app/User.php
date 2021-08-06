@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /** Definicion de constantes */
+    const RECETA_ID = 'receta_id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -59,4 +62,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Perfil::class);
     }
+
+    //Relacion n:n de Usuario a Receta ! recetas que el usuario le a dado me gusta
+    public function meGusta()
+    {
+        return $this->belongsToMany(Receta::class, 'likes_receta', 'user_id', 'receta_id' );
+    }
+
 }

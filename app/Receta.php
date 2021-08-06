@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receta extends Model
 {
+    const USER_ID = 'user_id';
+
     protected $fillable = [
         'titulo', 'ingredientes', 'imagen', 'categoria_id', 'preparacion',
     ];
@@ -20,5 +22,11 @@ class Receta extends Model
     public function autor()
     {
         return $this->belongsTo(User::class, 'user_id') ;//fk de la tabla
+    }
+
+    //Relacion n:n de Usuario a Receta ! likes que se ha recibido una receta
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes_receta', 'user_id', 'receta_id');
     }
 }

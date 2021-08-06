@@ -44,7 +44,14 @@
             </p>
         </div>
     </article>
+    <div class="justify-content-center row text-center">
+         {{--$likes --}}
+        <like-buttom
+            receta-id="{{ $receta->id }}"
+            like="{{$like}}"
+            likes="{{$likes}}">
+        </like-buttom>
+    </div>
 
-    <like-buttom></like-buttom>
 
 @endsection

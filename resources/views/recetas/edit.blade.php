@@ -25,7 +25,7 @@
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
-        <form method="POST" action="{{ route('recetas.update', ['receta' => $receta->id ]) }}" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('recetas.update', ['receta' => $receta->id ]) }}" enctype="multipart/form-data" novalidate>
             @method('put')
             @csrf
             <div class="form-group">

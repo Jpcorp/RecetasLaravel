@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\LikesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -12,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
     //return "Hola Mundo";
 });
+*/
+
+//Rutas del sitio web
+Route::any('/', [InicioController::class, 'index'])->name('inicio.index');
 
 Route::get('/home', "HomeController@index")->name("home.index");
 
@@ -38,7 +44,9 @@ Route::get('perfiles/{perfil}', "PerfilController@show")->name("perfiles.show");
 Route::get('perfiles/{perfil}/edit', "PerfilController@edit")->name("perfiles.edit");
 Route::put('perfiles/{perfil}', "PerfilController@update")->name("perfiles.update");
 
+//Almacena los likes de las recetas
+Route::post('recetas/like/{receta}', [LikesController::class, 'update'])->name("likes.update");
 
 Auth::routes();
 
-// para ver usos https://laravel.com/docs/8.x/controllers
+// para ver usos https://laravel.com/   docs/8.x/controllers

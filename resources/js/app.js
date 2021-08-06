@@ -43,6 +43,4 @@ const app = new Vue({
     el: '#app',
 });
 
-$('.like-btn').on('click', function() {
-    $(this).toggleClass('like-active');
- });
+
