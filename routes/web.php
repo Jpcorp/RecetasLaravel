@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\CuentasProvedoresController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LikesController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ResidenciasController;
+use App\Http\Controllers\TipoCuentaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -46,6 +51,19 @@ Route::put('perfiles/{perfil}', "PerfilController@update")->name("perfiles.updat
 
 //Almacena los likes de las recetas
 Route::post('recetas/like/{receta}', [LikesController::class, 'update'])->name("likes.update");
+
+// Rutas de tipos de cuentas
+Route::get('/tipoCtas', [TipoCuentaController::class, 'index'])->name("tiposCtas.index");
+
+Route::get('/residencias/create', [ResidenciasController::class, 'create'])->name("residencias.create");
+Route::post('/residencias', [ResidenciasController::class, 'store'])->name('residencias.store');
+
+Route::get('/proveedores/create', [ProveedorController::class, 'create'])->name('proveedores.create');
+Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
 
 Auth::routes();
 

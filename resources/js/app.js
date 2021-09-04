@@ -29,6 +29,8 @@ Vue.use(VueSweetalert2);
 Vue.component('fecha-receta', require('./components/FechaReceta.vue').default);
 Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').default);
 Vue.component('like-buttom', require('./components/LikeButtom.vue').default);
+Vue.component('input-rut', require('./components/rut.vue').default);
+
 
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
 
@@ -61,7 +63,7 @@ jQuery(document).ready( function() {
                 items: 2
             },
             1000 : {
-                items: 3 
+                items: 3
             }
         }
     });

@@ -1,0 +1,393 @@
+-- MySQL dump 10.13  Distrib 5.7.23, for macos10.13 (x86_64)
+--
+-- Host: 127.0.0.1    Database: recetasLaravel
+-- ------------------------------------------------------
+-- Server version	5.7.32
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `categoria_recetas`
+--
+
+DROP TABLE IF EXISTS `categoria_recetas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categoria_recetas` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categoria_recetas`
+--
+
+LOCK TABLES `categoria_recetas` WRITE;
+/*!40000 ALTER TABLE `categoria_recetas` DISABLE KEYS */;
+INSERT INTO `categoria_recetas` VALUES (1,'Comida Mexicana','2021-05-25 08:05:16','2021-05-25 08:05:16'),(2,'Comida Italina','2021-05-25 08:05:16','2021-05-25 08:05:16'),(3,'Comida Argentina','2021-05-25 08:05:16','2021-05-25 08:05:16'),(4,'Ensaladas','2021-05-25 08:05:16','2021-05-25 08:05:16'),(5,'Postres','2021-05-25 08:05:16','2021-05-25 08:05:16'),(6,'Chatarra','2021-05-25 08:05:16','2021-05-25 08:05:16'),(7,'Comida Mexicana','2021-08-30 21:08:54','2021-08-30 21:08:54'),(8,'Comida Italina','2021-08-30 21:08:54','2021-08-30 21:08:54'),(9,'Comida Argentina','2021-08-30 21:08:54','2021-08-30 21:08:54'),(10,'Ensaladas','2021-08-30 21:08:54','2021-08-30 21:08:54'),(11,'Postres','2021-08-30 21:08:54','2021-08-30 21:08:54'),(12,'Chatarra','2021-08-30 21:08:54','2021-08-30 21:08:54');
+/*!40000 ALTER TABLE `categoria_recetas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cuentas_proveedores`
+--
+
+DROP TABLE IF EXISTS `cuentas_proveedores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cuentas_proveedores` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'nombre de la residencia',
+  `direccion` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'direccion de la residencia',
+  `fecha_pago` date NOT NULL,
+  `fecha_vencimiento` date NOT NULL,
+  `nmro_cliente` date NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `proveedor_id` bigint(20) unsigned NOT NULL,
+  `tipo_cuenta_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cuentas_proveedores_user_id_foreign` (`user_id`),
+  KEY `cuentas_proveedores_proveedor_id_foreign` (`proveedor_id`),
+  KEY `cuentas_proveedores_tipo_cuenta_id_foreign` (`tipo_cuenta_id`),
+  CONSTRAINT `cuentas_proveedores_proveedor_id_foreign` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedores` (`id`),
+  CONSTRAINT `cuentas_proveedores_tipo_cuenta_id_foreign` FOREIGN KEY (`tipo_cuenta_id`) REFERENCES `tipo_cuentas` (`id`),
+  CONSTRAINT `cuentas_proveedores_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cuentas_proveedores`
+--
+
+LOCK TABLES `cuentas_proveedores` WRITE;
+/*!40000 ALTER TABLE `cuentas_proveedores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cuentas_proveedores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `failed_jobs`
+--
+
+LOCK TABLES `failed_jobs` WRITE;
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `likes_receta`
+--
+
+DROP TABLE IF EXISTS `likes_receta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `likes_receta` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `receta_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `likes_receta_user_id_foreign` (`user_id`),
+  KEY `likes_receta_receta_id_foreign` (`receta_id`),
+  CONSTRAINT `likes_receta_receta_id_foreign` FOREIGN KEY (`receta_id`) REFERENCES `recetas` (`id`),
+  CONSTRAINT `likes_receta_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `likes_receta`
+--
+
+LOCK TABLES `likes_receta` WRITE;
+/*!40000 ALTER TABLE `likes_receta` DISABLE KEYS */;
+INSERT INTO `likes_receta` VALUES (6,1,2,NULL,NULL),(12,1,3,NULL,NULL),(15,1,1,NULL,NULL),(16,2,2,NULL,NULL);
+/*!40000 ALTER TABLE `likes_receta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2021_04_12_181615_create_recetas_table',1),(5,'2021_05_18_170105_create_perfils_table',1),(6,'2021_05_25_041207_create_tipo_cuentas_table',1),(8,'2021_06_16_153452_create_likes_receta_pivot_table',2),(13,'2021_08_30_045230_create_cuentas_table',3),(18,'2021_08_26_222221_create_residencia_table',4),(24,'2021_08_30_130450_create_proveedores_table',5),(25,'2021_08_30_165528_create_cuentas_proveedores_table',5);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+INSERT INTO `password_resets` VALUES ('youtienda@gmail.com','$2y$10$ELuyt/BU7U3YgBNbQC8j3eTe3xa4DyuHPBZBXco3j61A/hRfZwTO6','2021-08-25 06:45:41');
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `perfils`
+--
+
+DROP TABLE IF EXISTS `perfils`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `perfils` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `biografia` text COLLATE utf8mb4_unicode_ci,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `perfils_user_id_foreign` (`user_id`),
+  CONSTRAINT `perfils_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `perfils`
+--
+
+LOCK TABLES `perfils` WRITE;
+/*!40000 ALTER TABLE `perfils` DISABLE KEYS */;
+INSERT INTO `perfils` VALUES (1,1,'<div><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>','uploads-perfiles/JA9Bwqt11bEbIvjJnlohVcfkNatQ8YW5PP2LQjdD.png','2021-05-25 08:45:16','2021-06-15 19:29:34'),(2,2,NULL,NULL,'2021-06-15 19:49:49','2021-06-15 19:49:49');
+/*!40000 ALTER TABLE `perfils` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proveedores`
+--
+
+DROP TABLE IF EXISTS `proveedores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `proveedores` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rut` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `digito_verif` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comuna` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `region` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `giro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proveedores_user_id_foreign` (`user_id`),
+  CONSTRAINT `proveedores_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proveedores`
+--
+
+LOCK TABLES `proveedores` WRITE;
+/*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recetas`
+--
+
+DROP TABLE IF EXISTS `recetas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recetas` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ingredientes` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preparacion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `categoria_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `recetas_user_id_foreign` (`user_id`),
+  KEY `recetas_categoria_id_foreign` (`categoria_id`),
+  CONSTRAINT `recetas_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categoria_recetas` (`id`),
+  CONSTRAINT `recetas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recetas`
+--
+
+LOCK TABLES `recetas` WRITE;
+/*!40000 ALTER TABLE `recetas` DISABLE KEYS */;
+INSERT INTO `recetas` VALUES (1,'pizza italina','<div>pichula</div>','<div>hace la masa ctm</div>','uploads-recetas/YXWlHMujMkb42UQLqFKI5V1KNL4tUzj0RtGE1P81.png',1,2,'2021-06-03 21:32:06','2021-06-03 21:32:06'),(2,'Filet Mignon con Salsa de Champiñones','<ul><li>1 Unidad Lomo Fino De Res cortado en 8 medallones grandes</li><li>8 Tajadas Tocino ahumado</li><li>1 Cucharadita Sal o al gusto</li><li>1 Cucharadita Pimienta Negra o al gusto</li><li>2 Cucharaditas Aceite De Oliva</li><li>1 Cucharadita Mantequilla Con Sal</li><li>1/2 Unidad Cebolla Perla picada en cubos pequeños</li><li>1 Taza Champiñones laminados</li><li>1/2 Taza Vino Tinto</li><li>1 Cubo Caldo De Costilla Maggi®</li><li>1 Taza Leche Evaporada La Lechera ®</li><li>1/4 Taza Crema De Leche La Lechera ®</li></ul><div><br></div>','<ol><li><br>Sazona los medallones de res con sal y pimienta. Envuélvelos con el tocino y para sujetarlos puedes ayudarte con hilo de cocina o palillos.</li><li><br>Pre calienta al horno a 200ºC o 375ºF. En una sartén a fuego medio con aceite caliente, dora los medallones por cada lado. Cuando tengan color, retira y llévalos en una lata al horno para terminar su cocción.</li><li><br>Mientras tanto, en la misma sartén que usaste para los lomos, dora cebolla y champiñones.</li><li><br>Vierte vino, deja evaporar el alcohol. Agrega Caldo de Costilla MAGGI®, Leche Evaporada LA LECHERA® y Crema de Leche LA LECHERA®. Deja espesar y verifica el sabor.Sirve la carne con la salsa y listo.</li></ol><div><br></div><div><br></div>','uploads-recetas/0TVRUfXzNyPGUK2ThABL24LycTobcRCsN2zLg2wL.jpg',2,6,'2021-06-15 19:56:46','2021-06-15 19:56:46'),(3,'Cherry pie','<div>Para 8 personas</div><ul><li>Harina de trigo (para la masa)</li><li><strong>250 g</strong></li><li>Mantequilla muy fría (para la masa)</li><li><strong>125 g</strong></li><li>Sal (para la masa)</li><li><strong>2 g</strong></li><li>Azúcar (para la masa)</li><li><strong>60 g</strong></li><li>Leche helada (para la masa)</li><li><strong>30</strong></li><li>Huevo para pincelar la tarta</li><li><strong>1</strong></li><li>Cerezas deshuesadas (para el relleno)</li><li><strong>800 g</strong></li><li>Azúcar (para el relleno)</li><li><strong>200 g</strong></li><li>Harina de maíz refinada (para el relleno)</li><li><strong>30 g</strong></li><li>Esencia de vainilla (para la masa)</li><li><strong>5 ml</strong></li><li>Clara de huevo (para la masa)</li><li><strong>1</strong></li></ul>','<div>Dificultad: Media</div><ul><li>Tiempo total</li><li>1 h 25 m</li><li>Elaboración</li><li><strong>30 m</strong></li><li>Cocción</li><li><strong>55 m</strong></li></ul><div>Lavamos bien las cerezas y las deshuesamos. Pesamos para obtener los 800 gramos necesarios para el relleno de nuestra tarta o cherry pie. Ponemos las cerezas deshuesadas y el azúcar en un recipiente amplio y hondo. Tapamos con papel film y dejamos <strong>reposar en la nevera</strong> entre 8 y 10 horas.<br><br></div><div>Preparamos la <strong>base de la tarta</strong> siguiendo las instrucciones de nuestra <a href=\"https://www.directoalpaladar.com/recetario/masa-brisa-para-elaboraciones-dulces-receta\">receta infalible de masa brisa</a>, pero sin llegar a hornearla. Esto lo haremos una vez rellena de cerezas y montada la tarta. Reservamos la masa en la nevera, dividida en dos mitades (una un poco más grande que otra) envueltas en papel film.<figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:450,&quot;url&quot;:&quot;https://i.blogs.es/2249d3/img_c5999ccb85da-1/450_1000.jpeg&quot;,&quot;width&quot;:450}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://i.blogs.es/2249d3/img_c5999ccb85da-1/450_1000.jpeg\" width=\"450\" height=\"450\"><figcaption class=\"attachment__caption\"></figcaption></figure><br><br></div><div>Cuando llegue el momento de montar la tarta, estiramos la mitad más grande de masa en forma circular y la colocamos en un <strong>molde de 25 cm</strong>, en cuya base habremos colocado un disco de papel vegetal. Retiramos el sobrante y guardamos en el congelador mientras continuamos con la receta.<br><br></div><div>Estiramos la otra porción de masa, dando <strong>forma rectangular</strong>. Con un cortapastas de zigzag o un cuchillo afilado cortamos en tiras de un centímetro de ancho, cubrimos con papel film y guardamos también en el congelador.<br><br></div><div>Añadimos la harina de maíz refinada a las cerezas, que habrán soltado todo su jugo, y removemos bien hasta que <strong>no se aprecien grumos</strong>. Sacamos la masa base del congelador y distribuimos el relleno por encima. Sacamos la otra masa del congelador y formamos un enrejado con las tiras sobre las cerezas.<br><br></div><div>Batimos el huevo y pincelamos el enrejado. Introducimos la tarta en la <strong>parte inferior</strong> del horno, precalentado a 220 ºC con calor abajo, y cocemos durante 12 minutos. Después bajamos la temperatura a 200 ºC y cocemos entre 35 y 40 minutos, según como se vea de dorada.<br><br></div><div>Retiramos la tarta del horno y dejamos <strong>enfriar completamente</strong> antes de desmoldar. Es una tarta muy frágil que hay que manipular con cuidado. Está deliciosa en el día de elaboración, pero también uno o dos días más tarde.<br><br></div>','uploads-recetas/PBUzzC9CrmdNyafxwDrfH4ctuAFEewEViTVmgiZ9.jpg',1,5,'2021-06-16 04:48:34','2021-06-16 04:48:34'),(4,'Marañuelas asturianas','<ul><li>500 g de harina de trigo común (aproximadamente)</li><li>100 g de mantequilla, a temperatura ambiente</li><li>100 g de azúcar</li><li>2 huevos M</li><li>Un pellizco de sal</li><li>1 limón (su zumo y ralladura)</li><li>75 ml de anís</li><li>10 g de levadura química</li></ul><div><br></div>','<div>Las <strong>marañuelas</strong> son un delicioso <a href=\"https://www.recetasderechupete.com/todas/recetas/postres-dulces/\"><strong>dulce</strong></a> típico de Semana Santa de las comarcas de Candás y Luanco en el Principado de Asturias. La autoría de la receta es motivo de discusión y rivalidad entre ambas comarcas, ubicadas a ambos lados del río Pielgo. Sin embargo, los orígenes de las marañuelas son mucho más antiguos.<br><br></div><div>Antes de los 400 años de los que hay constancia de la existencia de las marañuelas en Asturias, ya se horneaban en las antiguas cocinas de los países nórdicos. Don Valeriano, párroco de Candás, aportó la prueba inequívoca de dicho origen cuando viajó en los años 70 a Suecia y aseguró que en aquellas tierras existían dulces de origen muy antiguo, cuyos ingredientes y formas eran muy similares a las marañuelas asturianas.<br><br></div><div>Así que ni candansinos ni luanquinos, fueron ni más ni menos que los pueblos celtas venidos del norte de Europa los que nos dejaron la receta de las marañuelas. Polémica sobre su origen a parte, lo que sí está claro es que este dulce nació para alimentar a los marineros. Las mujeres hacían las marañuelas para que sus maridos y familiares las llevasen con ellos cuando se echaban al mar. Los mantenían alimentados durante meses.<br><br></div><div>Las masas se preparaban en casa y se llevaban al horno del pueblo para su cocción. Cada familia tenía una manera diferente de formar sus marañuelas, que las hacían fácilmente distinguibles de las demás. Hoy en día se ha perdido esta tradición, pero las marañuelas asturianas se siguen vendiendo en las pastelerías con diversas formas.<br><br></div><div>Os enseño cómo se preparan en casa y os animo a que las hagáis ya mismo. Son una delicia y puro vicio, perfectas para los amantes de los sabores de toda la vida: limón y anís. Unas <strong>pastas (o galletas) de rechupete</strong>.<br><br></div><div><br>Preparación de marañuelas asturianas<br><br></div><ol><li>Mezclamos el azúcar y la mantequilla en un recipiente hondo, lo suficientemente grande para que quepan el resto de ingredientes. No hace falta una batidora, con un tenedor y un poco de paciencia es suficiente.</li><li>La mantequilla tiene que estar a temperatura ambiente para que se integre bien con el azúcar. Si se nos olvidó sacarla de la nevera antes de ponernos en marcha con la receta, podemos pasarla por un rallador y en pocos minutos estará blandita. Cuando estos dos ingredientes estén bien integrados, añadimos los huevos y la sal y removemos para homogeneizar.</li><li>A continuación añadimos el anís y el zumo y la ralladura del limón. Nuevamente, mezclamos bien. Terminamos la masa añadiendo la levadura química y la harina, poco a poco y removiendo tras cada incorporación para que se integre bien. Es posible que no necesitemos toda la harina, de ahí que convenga añadirla poco a poco. Cuando hayamos obtenido una masa densa, pero hidratada, dejamos de añadir harina y la amasamos con las manos sobre una superficie de trabajo limpia.</li><li>Dividimos la masa en 12 porciones de igual peso y formamos las marañuelas. Para ello formamos un cordón con cada porción, haciendo rodar la masa sobre la superficie de trabajo y usando las manos para estirarla suavemente.</li><li>Anudamos o enroscamos cada cordón según la forma que nos apetezca. Yo he hecho cuatro formas diferentes, unas más fáciles que otras, y no soy ningún experto en nudos. Así que seguro que vosotros las bordáis.</li></ol><div><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:254,&quot;url&quot;:&quot;https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-1.png&quot;,&quot;width&quot;:1053}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-1.png\" width=\"1053\" height=\"254\"><figcaption class=\"attachment__caption\"></figcaption></figure></div><div><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:261,&quot;url&quot;:&quot;https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-2.png&quot;,&quot;width&quot;:1055}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-2.png\" width=\"1055\" height=\"261\"><figcaption class=\"attachment__caption\"></figcaption></figure></div><div><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:260,&quot;url&quot;:&quot;https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-3.png&quot;,&quot;width&quot;:1039}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-3.png\" width=\"1039\" height=\"260\"><figcaption class=\"attachment__caption\"></figcaption></figure></div><div><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:254,&quot;url&quot;:&quot;https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-4.png&quot;,&quot;width&quot;:1043}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-4.png\" width=\"1043\" height=\"254\"><figcaption class=\"attachment__caption\"></figcaption></figure></div><div><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:262,&quot;url&quot;:&quot;https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-5.png&quot;,&quot;width&quot;:1067}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-5.png\" width=\"1067\" height=\"262\"><figcaption class=\"attachment__caption\"></figcaption></figure></div><div><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image&quot;,&quot;height&quot;:419,&quot;url&quot;:&quot;https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-6.png&quot;,&quot;width&quot;:888}\" data-trix-content-type=\"image\" class=\"attachment attachment--preview\"><img src=\"https://www.recetasderechupete.com/wp-content/uploads/2021/06/Maranuelas-6.png\" width=\"888\" height=\"419\"><figcaption class=\"attachment__caption\"></figcaption></figure></div><div><br>Horneado y presentación final de las marañuelas asturianas<br><br></div><ol><li>Colocamos las marañuelas sobre una bandeja de horno, cubierta con papel vegetal o un tapete de silicona, dejando un poco de separación entre unas y otras. Al llevar levadura química, las marañuelas crecerán en el horno y con la separación adecuada nos aseguramos que no se pegan unas a otras.</li><li>Cocemos en la parte central del horno, precalentado a 190º C con calor arriba y abajo, durante 18-20 minutos. Tienen que quedar blanquitas por fuera, así que cuidado con pasarse con el tiempo.</li><li>Retiramos la bandeja del horno y dejamos enfriar las marañuelas antes de hincarles el diente. Sí sobran, las podemos guardar en un recipiente hermético y en un lugar seco. Duran meses en buen estado.</li></ol><div>Podéis ver todas las fotos del paso a paso en la <a href=\"https://www.flickr.com/photos/auguas/albums/72157719337285111\"><strong>receta de marañuelas asturianas.</strong></a><strong> </strong>No perdáis detalle y os saldrán de rechupete.<br><br></div><div><br></div>','uploads-recetas/FOx7kIKa8FOfg2FmZxRljzDyH6Q03lWYEPS9T3i2.jpg',1,5,'2021-06-16 05:48:32','2021-06-16 05:48:32'),(5,'LASAÑA DE CARNE PICADA CON BECHAMEL','<ul><li>8 placas de pasta para lasaña</li><li>1 cebolla</li><li>1 pimiento verde</li><li>1/2 pimiento rojo</li><li>2 dientes de ajo</li><li>500g de carne picada</li><li>250g de tomate frito (salsa de tomate)</li><li>Orégano seco</li><li>Aceite</li><li>Sal y pimienta</li><li>Un puñado de queso rallado</li></ul><div><strong><em>PARA LA SALSA BECHAMEL:<br></em></strong><br></div><ul><li>800ml de leche</li><li>65g de aceite o de mantequilla</li><li>65g de harina de trigo para todo uso</li><li>sal</li><li>Un puñado de queso rallado</li></ul><div><br></div>','<div>1.- En una sartén con un chorrito de aceite, ponemos la cebolla, los pimientos y el ajo, todo picado muy finito. Salpimentamos y lo sofreímos durante unos 10 minutos, mientras removemos de vez en cuando.<br><br></div><div>2.- Cuando la verdura se haya ablandado un poco, añadimos la carne picada. La salpimentamos y con una cuchara de palo la desmennuzamos y la integramos bien con la verdura. Dejamos cocinar un par de minutos más<br><br></div><div>3.- Cuando se haya cocinado añadimos el tomate frito y espolvoreamos con orégano seco. Removemos y dejamos cocinar todo durante alrededor de media hora. Que se evapore parte del agua que suelta la verdura y la carne picada.<br><br></div><div>4.- Mientras tanto preparamos la salsa bechamel. Para ello ponemos la mantequilla, o aceite, en otra cazuela y lo calentamos a fuego suave.<br><br></div><div>5.- Una vez caliente añadimos la harina. Mezclamos ambos ingredientes removiendo constantemente con una varilla durante unos 3 minutos<br><br></div><div>6.- Pasado el tiempo, añadimos 200ml de la leche y seguimos removiendo con la varilla. Esperemos que se caliente la mezcla y se integre. Al principio, quedará un mazacote bastante sólido<br><br></div><div><br></div><div>7.- Echamos otros 200ml de leche y repetimos el paso anterior. Quedará una salsa muy densa pero ya no tan «mazacote»<br><br></div><div>8.- Echamos los 400ml de la leche restante y mezclamos. Ahora quedará una salsa muy fina. Así la queremos para nuestra lasaña de carne picada. Añadimos un puñadito de queso a la salsa y una pizca de sal y después, dejamos cocinar 10 minutos más<br><br></div><div>9.- Hecho todo esto montamos la lasaña. Si utilizas placas de lasaña precocidas mejor que mejor. Hoy en día ya las venden en cualquier mercado. Si no, deberás cocerlas siguiendo las instrucciones del fabricante, antes de comenzar a montarla.<br><br></div><div>10.- En un molde ponemos unas cucharadas de la salsa bechamel. A modo de base para que no se pegue después la lasaña de carne al mismo. Después con una cuchara lo esparcimos por toda su superficie<br><br></div><div>11- Hecho esto, ponemos unas placas sobre el molde. Tantas como personas vayan a comer (2 placas de base=2 personas). Encima, ponemos unas cucharadas de la salsa de carne y verduras, esparciéndola por toda la superficie de las placas, y encima unas cucharadas de bechamel, esparciéndola por toda la superficie de la salsa de carne. Cerramos con dos placas de lasaña más y ya tendremos lista el primer piso de nuestra lasaña<br><br></div><div><br></div><div>12- Repetimos el paso anterior hasta haber hecho dos pisos más. En total, con una lasaña de tres pisos, debería ser suficiente<br><br></div><div>13- Una vez montada, le ponemos la bechamel restante por encima. Espolvoreamos con más queso rallado y la metemos al horno, calor arriba y abajo, a 200ºC. Durante unos 25 minutos.<br><br></div>','uploads-recetas/DY4rD609sj0pVbFPtRc1tIbYQT4PiRIUjJHx9zlw.jpg',1,2,'2021-06-16 08:11:15','2021-06-16 08:11:15');
+/*!40000 ALTER TABLE `recetas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `residencias`
+--
+
+DROP TABLE IF EXISTS `residencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `residencias` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'nombre de la residencia',
+  `direccion` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'direccion de la residencia',
+  `comuna` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `region` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `residencias_user_id_foreign` (`user_id`),
+  CONSTRAINT `residencias_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `residencias`
+--
+
+LOCK TABLES `residencias` WRITE;
+/*!40000 ALTER TABLE `residencias` DISABLE KEYS */;
+INSERT INTO `residencias` VALUES (1,'Casa 28','Thiare 1195','Santiago','RM',2,'2021-08-30 21:08:24','2021-08-30 21:08:24'),(2,'apsaps','aps2',NULL,'RM',2,NULL,NULL),(3,'apsaps','aps2',NULL,'RM',2,'2021-08-31 19:46:13','2021-08-31 19:46:13'),(4,'apsaps','aps2','Santiago','RM',2,'2021-08-31 19:47:29','2021-08-31 19:47:29');
+/*!40000 ALTER TABLE `residencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipo_cuentas`
+--
+
+DROP TABLE IF EXISTS `tipo_cuentas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipo_cuentas` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_cuentas`
+--
+
+LOCK TABLES `tipo_cuentas` WRITE;
+/*!40000 ALTER TABLE `tipo_cuentas` DISABLE KEYS */;
+INSERT INTO `tipo_cuentas` VALUES (1,'Ctas por pagar','Cuentas por pagar','2021-05-25 08:05:16','2021-05-25 08:05:16'),(2,'Ctas por cobrar','Cuentas por cobrar','2021-05-25 08:05:16','2021-05-25 08:05:16');
+/*!40000 ALTER TABLE `tipo_cuentas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Juan Pablo 2','ju.guinart@live.cl',NULL,'$2y$10$RnGix85hoeEdisyY1wqoSObP1VBhlYOLw1kAyN.a87BrGEB4wVb/K','http://codigojuan.com','NDkJpD0ILrJD9mq7boKMJU6OWnSV20C1RRKlSYNFCwWu3WqxJ9kjSAE7EJ4n','2021-05-25 08:45:16','2021-06-15 19:29:34'),(2,'Juan Pedro','youtienda@gmail.com',NULL,'$2y$10$Q.W5169A9gZR7PV3UjtS9.TFc.bwh8J6cmd3K6vhNCA6CDh1/t4Nq','http://www.youporn.com',NULL,'2021-06-15 19:49:49','2021-06-15 19:49:49');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'recetasLaravel'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-08-31 23:42:15

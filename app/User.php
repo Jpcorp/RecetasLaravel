@@ -69,4 +69,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Receta::class, 'likes_receta', 'user_id', 'receta_id' );
     }
 
+    /** Relacion 1:n de Usuario a Receta */
+    public function userToResidencias()
+    {
+        return $this->hasMany(Residencias::class);
+    }
+
+    public function userToProveedor()
+    {
+        return $this->hasMany(Proveedor::class, 'user_id');
+    }
+
+
 }

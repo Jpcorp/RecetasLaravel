@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\TipoCuenta;
+use App\CuentasProveedores;
 use Illuminate\Http\Request;
 
-class TipoCuentaController extends Controller
+class CuentasProveedoresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class TipoCuentaController extends Controller
     public function index()
     {
         //
-        $tiposCtas = TipoCuenta::all();
-        //return $tiposCtas;
-        return view('tipoCtas.index', compact('tiposCtas'));
+
     }
 
     /**
@@ -28,6 +26,8 @@ class TipoCuentaController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -44,22 +44,21 @@ class TipoCuentaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\tipoCuenta  $tipoCuenta
+     * @param  \App\CuentasProveedores  $cuentasProveedores
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoCuenta $tipoCuenta)
+    public function show(CuentasProveedores $cuentasProveedores)
     {
         //
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\tipoCuenta  $tipoCuenta
+     * @param  \App\CuentasProveedores  $cuentasProveedores
      * @return \Illuminate\Http\Response
      */
-    public function edit(tipoCuenta $tipoCuenta)
+    public function edit(CuentasProveedores $cuentasProveedores)
     {
         //
     }
@@ -68,10 +67,10 @@ class TipoCuentaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\tipoCuenta  $tipoCuenta
+     * @param  \App\CuentasProveedores  $cuentasProveedores
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tipoCuenta $tipoCuenta)
+    public function update(Request $request, CuentasProveedores $cuentasProveedores)
     {
         //
     }
@@ -79,10 +78,10 @@ class TipoCuentaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\tipoCuenta  $tipoCuenta
+     * @param  \App\CuentasProveedores  $cuentasProveedores
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tipoCuenta $tipoCuenta)
+    public function destroy(CuentasProveedores $cuentasProveedores)
     {
         //
     }

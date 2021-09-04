@@ -32,5 +32,34 @@
         </div>
     </div>
 
+    @foreach($recetas as $key => $grupo)
+        <div class="container">
+            <h2 class="titulo-categoria text-uppercase mt-5 mb-4">{{ str_replace('-', ' ', $key ) }}</h2>
+        </div>
+
+        <div class="row">
+            @foreach($grupo as $recetas)
+                @foreach($recetas as $receta)
+                    <div class="col-md-4 mt-4">
+                        <div class="card shadow">
+                            <img class="card-img-top" src="/storage/{{ $receta->imagen}}" alt="imagen receta" />
+                            <div class="card-body">
+                                <h3 class="card-title">{{ $receta->titulo }}</h3>
+                                <a href=" {{ route('recetas.show', ['receta' => $nueva->id ]) }} "
+                                    class="card-title"
+                                    >{{ $receta->titulo }}
+                                </a>
+                                <h3 class="card-title">
+                                    <a href=" {{ route('recetas.show', ['receta' => $nueva->id ]) }} ">
+                                        {{ $receta->titulo }}</a> </h3>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endforeach
+        </div>
+
+    @endforeach
+
     {{-- $nuevas --}}
 @endsection

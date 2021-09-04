@@ -31,4 +31,5 @@ class CreateLikesRecetaPivotTable extends Migration
     {
         Schema::dropIfExists('likes_receta');
     }
+
 }
