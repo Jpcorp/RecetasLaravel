@@ -62,7 +62,6 @@ Route::get('/proveedores/create', [ProveedorController::class, 'create'])->name(
 Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 
 Auth::routes();
