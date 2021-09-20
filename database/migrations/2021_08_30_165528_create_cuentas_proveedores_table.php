@@ -16,8 +16,8 @@ class CreateCuentasProveedoresTable extends Migration
         Schema::create('cuentas_proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50)->comment('nombre de la residencia');
-            $table->date('fecha_pago');
-            $table->date('fecha_vencimiento');
+            $table->date('dia_pago');
+            $table->date('dia_vencimiento');
             $table->date('nmro_cliente');
             $table->foreignId('user_id')->references('id')->on('users')->comment('El usuario que crea la residencia');
             $table->foreignId('proveedor_id')->references('id')->on('proveedors')->comment('Proveedor de la cuenta');

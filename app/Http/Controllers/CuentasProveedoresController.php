@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\CuentasProveedores;
+use App\Proveedor;
+use App\Residencias;
 use Illuminate\Http\Request;
 
 class CuentasProveedoresController extends Controller
@@ -25,8 +27,9 @@ class CuentasProveedoresController extends Controller
      */
     public function create()
     {
-        //
-
+        $residencias = Residencias::where(['id', 'nombre']);
+        $proveedores = Proveedor::where(['id', 'nombre']);
+        return view('cuentasProveedores.create', compact('residencias', 'proveedores'));
 
     }
 

@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\CuentasProvedoresController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\InicioController;
-use App\Http\Controllers\LikesController;
-use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\ResidenciasController;
-use App\Http\Controllers\TipoCuentaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikesController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\TipoCuentaController;
+use App\Http\Controllers\ResidenciasController;
+use App\Http\Controllers\CuentasProveedoresController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,7 +62,11 @@ Route::get('/proveedores/create', [ProveedorController::class, 'create'])->name(
 Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/getAllResidencias', [ResidenciasController::class, 'getAllResidencias'])->name('residencias.getAllResidencias');
+Route::get('/getCtasPorPagarByMes/{residencia}', [ResidenciasController::class, 'getCtasPorPagarByMes'])->name('residencias.getCtasPorPagarByMes');
 
+Route::get('/cuentasProveedores/create', [CuentasProveedoresController::class, 'create'])->name('cuentasProveedores.create');
+Route::post('/cuentasProveedores', [CuentasProveedoresController::class, 'store'])->name('cuentasProveedores.store');
 
 Auth::routes();
 

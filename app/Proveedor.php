@@ -15,6 +15,7 @@ class Proveedor extends Model
         'nombre', 'rut', 'direccion', 'tlf',
         'comuna', 'region', 'giro',
         'descripcion', 'user_id', 'residencias_id',
+
     ];
 
     //Obtiene la informacion por via PK

@@ -6,12 +6,19 @@
 import 'owl.carousel';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
-
+import flatpickr from "flatpickr";
 require('./bootstrap');
 
 window.Vue = require('vue');
 
+/**
+ * Components js the date latpickr.js.org
+ * Idioma :
+ */
+const lang = require("flatpickr/dist/l10n/es.js").default.es;
+
+window.flatpckr = flatpickr;
+flatpickr.localize(lang);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,6 +37,7 @@ Vue.component('fecha-receta', require('./components/FechaReceta.vue').default);
 Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').default);
 Vue.component('like-buttom', require('./components/LikeButtom.vue').default);
 Vue.component('input-rut', require('./components/rut.vue').default);
+Vue.component('elegir-residencia', require('./components/elegirResidencia.vue').default);
 
 
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
@@ -67,5 +75,28 @@ jQuery(document).ready( function() {
             }
         }
     });
+
+    function getCurrentMonthFirst() {
+        var date = new Date();
+        date.setDate(1);
+        return date
+    }
+
+    function fnLastDayOfMonth() {
+        var today = new Date();
+        var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth()+1, 0);
+        return lastDayOfMonth;
+    }
+
+
+    jQuery('.dayOfMonth').flatpickr({
+        enableTime: false,
+        dateFormat: "d",
+        minDate: getCurrentMonthFirst(),
+        maxDate: fnLastDayOfMonth(),
+
+    });
+
+
 });
 

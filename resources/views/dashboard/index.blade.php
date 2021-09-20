@@ -14,35 +14,18 @@
     <div class="justify-content-left col-12">
         <form method="POST"  enctype="multipart/form-data" class="row g-3" novalidate>
             <div class="col-2">
-                <label for="residencia"><small>Elige una residencia para listar:</small></label>
+                <label for="residencia">1.- <small>Elige una residencia para listar:</small></label>
             </div>
 
-            <div class="col-4">
-                <select name="residencia"
-                        class="form-control @error('residencia') is-invalid  @enderror"
-                        id="residencia">
+            <div class="col-5">
 
-                        <option value="">-- Seleccionar --</option>
-                        @foreach($residencias as $residencia)
-                            <option value="{{ $residencia->id }}"
-                                {{ old('residencia') == $residencia->id ? 'selected' : '' }}
-                                >{{ $residencia->nombre }}</option>
-                        @endforeach
+            <elegir-residencia inf="{{ $data }}"></elegir-residencia>
 
-                </select>
-
-                @error('residencia')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="">
-                <input type="submit" class=" form-control btn btn-primary " value="Ver estado" />
             </div>
 
         </form>
     </div>
+
     <div class="justify-content-left col-12">
 
         <h3>Servicio del mes: [Septiembre] </h3>

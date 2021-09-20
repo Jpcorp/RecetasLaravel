@@ -18,7 +18,7 @@ class CreateProveedoresTable extends Migration
             $table->string('nombre');
             $table->string('rut', 15);
             $table->string('direccion')->nullable();
-            $table->integer('tlf')->nullable();
+            $table->string('tlf')->nullable();
             $table->string('comuna')->nullable();
             $table->string('region')->nullable();
             $table->string('giro')->nullable();

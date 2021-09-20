@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $residencias = Residencias::all(['id', 'nombre']);
 
         //dd($residencias);
-        return view('dashboard.index', compact('residencias'));
+        return view('dashboard.index')->with('data', $residencias);
 
 
     }
