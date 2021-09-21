@@ -15,4 +15,9 @@ class TipoCuenta extends Model
         'nombre', 'descripcion', 'created_at'
     ];
 
+    public function hasManyCtasProveedor()
+    {
+        return $this->hasMany(CuentasProveedores::class, 'tipo_cuenta_id');
+    }
+
 }

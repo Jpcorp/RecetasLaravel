@@ -67,6 +67,7 @@ Route::get('/getCtasPorPagarByMes/{residencia}', [ResidenciasController::class, 
 
 Route::get('/cuentasProveedores/create', [CuentasProveedoresController::class, 'create'])->name('cuentasProveedores.create');
 Route::post('/cuentasProveedores', [CuentasProveedoresController::class, 'store'])->name('cuentasProveedores.store');
+Route::get('/cuentasProveedores', [CuentasProveedoresController::class, 'show'])
 
 Auth::routes();
 

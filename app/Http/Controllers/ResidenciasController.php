@@ -51,11 +51,6 @@ class ResidenciasController extends Controller
         $lastdaymonth = $date->format('d');
 
         //obtener las cuentas por pagar del mes actual
-
-
-
-
-
     }
 
     /**

@@ -8,14 +8,14 @@
 
 @section('content')
 
-    <h2 class="text-center mb-5">Crear nueva Cuenta Proveedor</h2>
+    <h2 class="text-center mb-5">Crear nuevo Servicio Proveedor</h2>
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <form method="POST" action="{{ route('cuentasProveedores.store') }}"  enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="form-group">
-                    <label for="nombre">Nombre de la cuenta</label>
+                    <label for="nombre">Nombre del Servicio</label>
 
                     <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}"
                         class="form-control @error('nombre') is-invalid  @enderror"
@@ -45,10 +45,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="dia">Dia de pago</label>
+                    <label for="Dia de pago">Dia de pago</label>
 
                     <input type="text" name="dia_pago" id="dia_pago" value="{{ old('dia_pago') }}"
-                        class="form-control @error('dia_pago') is-invalid  @enderror"
+                        class="form-control dayOfMonth @error('dia_pago') is-invalid  @enderror"
                         placeholder="Dia de pago" />
 
                     @error('dia_pago')
@@ -71,13 +71,77 @@
 
                 </div>
 
+                <div class="form-group">
+                    <label for="Proveedor">Compañia Servicio</label>
+
+                    <select name="proveedor_id"
+                            class="form-control @error('proveedor_id') is-invalid  @enderror"
+                            id="proveedor_id">
+
+                            <option value="">-- Seleccionar --</option>
+                            @foreach($proveedores as $proveedor)
+                                <option value="{{ $proveedor->id }}"
+                                    {{ $proveedor->proveedor_id == $proveedor->id ? 'selected' : '' }}
+                                    >{{ $proveedor->nombre }}</option>
+                            @endforeach
+
+                    </select>
+
+                    @error('proveedor_id')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
 
                 <div class="form-group">
-                    <label for="datetimepicker">Prueba de fecha</label>
-                    <input type='text' class="form-control dayOfMonth" id="datetimepicker" name="datetimepicker" />
-                        <span class="input-group-addon">
-                          <span class="glyphicon glyphicon-calendar"></span>
+                    <label for="residencia_id">Residencia Servicio</label>
+
+                    <select name="residencia_id"
+                            class="form-control @error('residencia_id') is-invalid  @enderror"
+                            id="proveedor_id">
+
+                            <option value="">-- Seleccionar --</option>
+                            @foreach($residencias as $residencia)
+                                <option value="{{ $residencia->id }}"
+                                    {{ $residencia->residencia_id == $residencia->id ? 'selected' : '' }}
+                                    >{{ $residencia->nombre }}</option>
+                            @endforeach
+
+                    </select>
+
+                    @error('proveedor_id')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
                         </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_cuenta_id">Tipo de Cuenta</label>
+
+                    <select name="tipo_cuenta_id"
+                            class="form-control @error('tipo_cuenta_id') is-invalid  @enderror"
+                            id="tipo_cuenta_id">
+
+                            <option value="">-- Seleccionar --</option>
+                            @foreach($tiposCuentas as $tipoCuenta)
+                                <option value="{{ $tipoCuenta->id }}"
+                                    {{ $tipoCuenta->tipo_cuenta_id == $tipoCuenta->id ? 'selected' : '' }}
+                                    >{{ $tipoCuenta->nombre }}</option>
+                            @endforeach
+
+                    </select>
+
+                    @error('tipo_cuenta_id')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="guardar servicio" />
 
                 </div>
         </div>

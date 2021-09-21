@@ -80,5 +80,11 @@ class User extends Authenticatable
         return $this->hasMany(Proveedor::class, 'user_id');
     }
 
+    public function userToServicioProveedor()
+    {
+        return $this->hasMany(CuentasProveedores::class, 'user_id');
+    }
+
+
 
 }

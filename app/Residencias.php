@@ -26,7 +26,9 @@ class Residencias extends Model
         return $this->hasMany(Proveedor::class);
     }
 
-
-
+    public function registraCtasProveedores()
+    {
+        return $this->hasMany(CuentasProveedores::class, 'residencia_id');
+    }
 
 }

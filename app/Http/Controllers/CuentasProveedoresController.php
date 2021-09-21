@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\CuentasProveedores;
 use App\Proveedor;
+use App\TipoCuenta;
 use App\Residencias;
+use App\CuentasProveedores;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CuentasProveedoresController extends Controller
 {
+     //Function para proteger las acciones requieren autenticarse antes
+     public function __construct()
+     {
+         $this->middleware('auth', ['except' => ['create']]);
+     }
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +34,12 @@ class CuentasProveedoresController extends Controller
      */
     public function create()
     {
-        $residencias = Residencias::where(['id', 'nombre']);
-        $proveedores = Proveedor::where(['id', 'nombre']);
-        return view('cuentasProveedores.create', compact('residencias', 'proveedores'));
+        //$residencias = Residencias::where(['id', 'nombre']);
+        $residencias = Residencias::all(['id', 'nombre']);
+        $proveedores = Proveedor::all(['id', 'nombre']);
+        $tiposCuentas = TipoCuenta::all(['id', 'nombre']);
+        return view('cuentasProveedores.create',
+                        compact('residencias', 'proveedores', 'tiposCuentas'));
 
     }
 
@@ -41,7 +51,31 @@ class CuentasProveedoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        //Validar formulario
+        $data = request()->validate([
+            'nombre' => 'required|min:6',
+            'nmro_cliente' => 'required',
+            'dia_pago' => 'required',
+            'dia_vencimiento' => 'required',
+            'proveedor_id' => 'required',
+            'residencia_id' => 'required',
+            'tipo_cuenta_id' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        $user->userToServicioProveedor()->create([
+            'nombre' => $data['nombre'],
+            'nmro_cliente' => $data['nmro_cliente'],
+            'dia_pago' => $data['dia_pago'],
+            'dia_vencimiento' => $data['dia_vencimiento'],
+            'proveedor_id' => $data['proveedor_id'],
+            'residencia_id' => $data['residencia_id'],
+            'tipo_cuenta_id' => $data['tipo_cuenta_id'],
+        ]);
+
+        return redirect()->action('DashboardController@index');
     }
 
     /**

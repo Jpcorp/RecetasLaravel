@@ -41,7 +41,7 @@ class CreateRecetasTable extends Migration
     {
         Schema::dropIfExists('recetas');
 
-        Schema::dropIfExists('categoria_receta');
+        Schema::dropIfExists('categoria_recetas');
 
 
     }
