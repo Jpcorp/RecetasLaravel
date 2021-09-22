@@ -3,6 +3,7 @@
         <input v-model="rut" class="form-control " :class=" {'is-invalid ': error !=''} "
             name="rut" ref="rut" id="rut" type="text" @blur="validateRut"
             placeholder="12.345.678-0" required autofocus>
+
         <span class="invalid-feedback d-block" role="alert" v-if="error != ''">
             <strong>{{error}}</strong>
         </span>

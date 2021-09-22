@@ -30,6 +30,7 @@
                         <td>
                             <a href="{{ route('cuentasProveedores.edit', ['cuentasProveedores' => $cuenta->id ] ) }}"
                                class="btn btn-dark b-block w-100 mb-2">Editar</a>
+                            <eliminar-servicio servicio-id={{ $cuenta->id }}></eliminar-servicio>
                         </td>
                     <tr>
                 @endforeach

@@ -125,6 +125,7 @@ class CuentasProveedoresController extends Controller
             'residencia_id' => 'required',
             'tipo_cuenta_id' => 'required',
         ]);
+
         //asignar request al modelo
         $cuentasProveedores->nombre = $data['nombre'];
         $cuentasProveedores->nmro_cliente = $data['nmro_cliente'];
@@ -133,11 +134,12 @@ class CuentasProveedoresController extends Controller
         $cuentasProveedores->proveedor_id =  $data['proveedor_id'];
         $cuentasProveedores->residencia_id = $data['residencia_id'];
         $cuentasProveedores->tipo_cuenta_id = $data['tipo_cuenta_id'];
+
         //insertar en bd
         $cuentasProveedores->save();
+
         //redireccionar pantalla
         return redirect()->action('DashboardController@index');
-
     }
 
     /**
@@ -148,6 +150,8 @@ class CuentasProveedoresController extends Controller
      */
     public function destroy(CuentasProveedores $cuentasProveedores)
     {
-        //
+        $cuentasProveedores->delete();
+
+        return redirect()->action('DashboardController@index');
     }
 }

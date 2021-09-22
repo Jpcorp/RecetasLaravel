@@ -69,7 +69,8 @@ Route::get('/cuentasProveedores', [CuentasProveedoresController::class, 'index']
 Route::get('/cuentasProveedores/create', [CuentasProveedoresController::class, 'create'])->name('cuentasProveedores.create');
 Route::post('/cuentasProveedores', [CuentasProveedoresController::class, 'store'])->name('cuentasProveedores.store');
 Route::get('/cuentasProveedores/{cuentasProveedores}/edit', [CuentasProveedoresController::class, 'edit'])->name('cuentasProveedores.edit');
-Route::put('cuentasProveedores/{cuentasProveedores}', [CuentasProveedoresController::class, 'update'])->name("cuentasProveedores.update");
+Route::put('/cuentasProveedores/{cuentasProveedores}', [CuentasProveedoresController::class, 'update'])->name("cuentasProveedores.update");
+Route::delete('/cuentasProveedores/{cuentasProveedores}', [CuentasProveedoresController::class, 'destroy'])->name("cuentasProveedores.destroy");
 
 
 Auth::routes();

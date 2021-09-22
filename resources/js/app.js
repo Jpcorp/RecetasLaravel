@@ -38,6 +38,8 @@ Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').defa
 Vue.component('like-buttom', require('./components/LikeButtom.vue').default);
 Vue.component('input-rut', require('./components/rut.vue').default);
 Vue.component('elegir-residencia', require('./components/elegirResidencia.vue').default);
+Vue.component('eliminar-servicio', require('./components/EliminarServicio.vue').default);
+
 
 
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
