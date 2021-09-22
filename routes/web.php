@@ -65,9 +65,12 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/getAllResidencias', [ResidenciasController::class, 'getAllResidencias'])->name('residencias.getAllResidencias');
 Route::get('/getCtasPorPagarByMes/{residencia}', [ResidenciasController::class, 'getCtasPorPagarByMes'])->name('residencias.getCtasPorPagarByMes');
 
+Route::get('/cuentasProveedores', [CuentasProveedoresController::class, 'index'])->name('cuentasProveedores.index');
 Route::get('/cuentasProveedores/create', [CuentasProveedoresController::class, 'create'])->name('cuentasProveedores.create');
 Route::post('/cuentasProveedores', [CuentasProveedoresController::class, 'store'])->name('cuentasProveedores.store');
-Route::get('/cuentasProveedores', [CuentasProveedoresController::class, 'show'])
+Route::get('/cuentasProveedores/{cuentasProveedores}/edit', [CuentasProveedoresController::class, 'edit'])->name('cuentasProveedores.edit');
+Route::put('cuentasProveedores/{cuentasProveedores}', [CuentasProveedoresController::class, 'update'])->name("cuentasProveedores.update");
+
 
 Auth::routes();
 

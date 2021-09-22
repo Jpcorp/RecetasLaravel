@@ -36,8 +36,6 @@ class RecetaController extends Controller
 
         $recetas = Receta::where('user_id', $usuario->id)->paginate(4);
 
-
-
         return view("recetas.index")
                 ->with('recetas', $recetas)
                 ->with('usuario', $usuario);

@@ -23,7 +23,9 @@ class CuentasProveedoresController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = auth()->user();
+        $cuentas = CuentasProveedores::where('user_id', $usuario->id)->paginate(4);
+        return view('cuentasProveedores.index')->with('cuentas', $cuentas);
 
     }
 
@@ -97,7 +99,11 @@ class CuentasProveedoresController extends Controller
      */
     public function edit(CuentasProveedores $cuentasProveedores)
     {
-        //
+        $residencias = Residencias::all(['id', 'nombre']);
+        $proveedores = Proveedor::all(['id', 'nombre']);
+        $tiposCuentas = TipoCuenta::all(['id', 'nombre']);
+        return view('cuentasProveedores.edit',
+                    compact('cuentasProveedores', 'residencias', 'proveedores', 'tiposCuentas'));
     }
 
     /**
@@ -109,7 +115,29 @@ class CuentasProveedoresController extends Controller
      */
     public function update(Request $request, CuentasProveedores $cuentasProveedores)
     {
-        //
+        //validar el formulario
+        $data = request()->validate([
+            'nombre' => 'required|min:6',
+            'nmro_cliente' => 'required',
+            'dia_pago' => 'required',
+            'dia_vencimiento' => 'required',
+            'proveedor_id' => 'required',
+            'residencia_id' => 'required',
+            'tipo_cuenta_id' => 'required',
+        ]);
+        //asignar request al modelo
+        $cuentasProveedores->nombre = $data['nombre'];
+        $cuentasProveedores->nmro_cliente = $data['nmro_cliente'];
+        $cuentasProveedores->dia_pago = $data['dia_pago'];
+        $cuentasProveedores->dia_vencimiento =  $data['dia_vencimiento'];
+        $cuentasProveedores->proveedor_id =  $data['proveedor_id'];
+        $cuentasProveedores->residencia_id = $data['residencia_id'];
+        $cuentasProveedores->tipo_cuenta_id = $data['tipo_cuenta_id'];
+        //insertar en bd
+        $cuentasProveedores->save();
+        //redireccionar pantalla
+        return redirect()->action('DashboardController@index');
+
     }
 
     /**
