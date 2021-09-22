@@ -58,8 +58,12 @@ Route::get('/tipoCtas', [TipoCuentaController::class, 'index'])->name("tiposCtas
 Route::get('/residencias/create', [ResidenciasController::class, 'create'])->name("residencias.create");
 Route::post('/residencias', [ResidenciasController::class, 'store'])->name('residencias.store');
 
+Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores.index');
 Route::get('/proveedores/create', [ProveedorController::class, 'create'])->name('proveedores.create');
 Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
+Route::get('/proveedores/{proveedor}/edit', [ProveedorController::class, 'edit'])->name('proveedores.edit');
+Route::put('/proveedores/{proveedor}', [ProveedorController::class, 'update'])->name("proveedores.update");
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/getAllResidencias', [ResidenciasController::class, 'getAllResidencias'])->name('residencias.getAllResidencias');
@@ -67,8 +71,8 @@ Route::get('/getCtasPorPagarByMes/{residencia}', [ResidenciasController::class, 
 
 Route::get('/cuentasProveedores', [CuentasProveedoresController::class, 'index'])->name('cuentasProveedores.index');
 Route::get('/cuentasProveedores/create', [CuentasProveedoresController::class, 'create'])->name('cuentasProveedores.create');
-Route::post('/cuentasProveedores', [CuentasProveedoresController::class, 'store'])->name('cuentasProveedores.store');
 Route::get('/cuentasProveedores/{cuentasProveedores}/edit', [CuentasProveedoresController::class, 'edit'])->name('cuentasProveedores.edit');
+Route::post('/cuentasProveedores', [CuentasProveedoresController::class, 'store'])->name('cuentasProveedores.store');
 Route::put('/cuentasProveedores/{cuentasProveedores}', [CuentasProveedoresController::class, 'update'])->name("cuentasProveedores.update");
 Route::delete('/cuentasProveedores/{cuentasProveedores}', [CuentasProveedoresController::class, 'destroy'])->name("cuentasProveedores.destroy");
 

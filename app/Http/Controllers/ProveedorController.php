@@ -21,6 +21,22 @@ class ProveedorController extends Controller
      }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+
+        $usuario = auth()->user();
+        $residencias = Residencias::where('user_id', $usuario->id)->get();
+        $proveedores = Proveedor::where('user_id', $usuario->id)->get();
+
+        return view('proveedores.index', compact('residencias', 'proveedores'));
+
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -39,9 +55,6 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //dd($request->all());
-
         //valido la informacion entregada
         $data = $request->validate([
             'nombre' => 'required',
@@ -67,7 +80,7 @@ class ProveedorController extends Controller
             'descripcion' => $data['descripcion'],
         ]);
 
-        return redirect()->action('RecetaController@index');
+        return redirect()->action('DashboardController@index');
     }
 
     /**
@@ -89,7 +102,9 @@ class ProveedorController extends Controller
      */
     public function edit(Proveedor $proveedor)
     {
-        //
+        $usuario = auth()->user();
+        $residencias = Residencias::where('user_id', $usuario->id)->get();
+        return view('proveedores.edit', compact('proveedor', 'residencias'));
     }
 
     /**

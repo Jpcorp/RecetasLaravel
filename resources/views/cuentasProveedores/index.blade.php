@@ -16,7 +16,7 @@
             <tr>
                 <th scole="col">nombre</th>
                 <th scole="col">Proveedor de servicio</th>
-                <th scole="col">dia de pago y dia que vencimiento</th>
+                <th scole="col">dia de pago y de vencimiento</th>
                 <th scole="col">Ver mas</th>
             </tr>
         </thead>

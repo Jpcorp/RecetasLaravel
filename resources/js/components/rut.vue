@@ -12,7 +12,17 @@
 
 <script>
     export default {
+        props: ['rutId'],
+
         data() {
+
+            if (this.rutId != '' || this.rutId != null) {
+                    return {
+                    rut: this.rutId,
+                    error: '',
+                }
+            }
+
             return {
                 rut: '',
                 error: '',

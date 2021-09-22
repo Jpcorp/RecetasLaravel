@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
-@section('styles')
+
+@section('buttons')
+
+    @include('ui.navbarCuentas')
+
 @endsection
+
 
 @section('content')
 

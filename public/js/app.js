@@ -2215,7 +2215,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['rutId'],
   data: function data() {
+    if (this.rutId != '' || this.rutId != null) {
+      return {
+        rut: this.rutId,
+        error: ''
+      };
+    }
+
     return {
       rut: '',
       error: ''

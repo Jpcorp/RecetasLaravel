@@ -2,8 +2,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="navbar-brand nav-link dropdown-toggle" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{ route('dashboard.index') }}">Navbar</a>
+            <a class="nav-link dropdown-toggle" href="{{ route('dashboard.index') }}">Inicio</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -11,7 +10,7 @@
                     Libro de diario
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('cuentasProveedores.create') }}">Ingresar</a>
+                  <a class="dropdown-item" href="#">Ingresar</a>
                   <a class="dropdown-item" href="#">Modificar</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Eliminar</a>
@@ -24,7 +23,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('proveedores.create') }}">Proveedores</a>
-                  <a class="dropdown-item" href="#">Servicios</a>
+                  <a class="dropdown-item" href="{{ route('cuentasProveedores.create') }}">Servicios</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('residencias.create') }}">Residencias</a>
                 </div>
@@ -35,7 +34,7 @@
                     Modificar
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Proveedores</a>
+                <a class="dropdown-item" href="{{ route('proveedores.index') }}">Proveedores</a>
                 <a class="dropdown-item" href="{{ route('cuentasProveedores.index') }}">Servicios</a>
                 </div>
             </li>

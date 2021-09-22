@@ -6,6 +6,14 @@
 
 @endsection
 
+
+@section('buttons')
+
+    @include('ui.navbarCuentas')
+
+@endsection
+
+
 @section('content')
 
     <h2 class="text-center mb-5">Crear nuevo Servicio Proveedor</h2>
