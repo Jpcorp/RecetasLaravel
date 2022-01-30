@@ -10,7 +10,7 @@
                     Libro de diario
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Ingresar</a>
+                <a class="dropdown-item" href="#">Ingresar</a>
                   <a class="dropdown-item" href="#">Modificar</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Eliminar</a>

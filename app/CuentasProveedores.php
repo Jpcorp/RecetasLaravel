@@ -14,10 +14,10 @@ class CuentasProveedores extends Model
     protected $fillable = [
         'nombre', 'dia_pago', 'dia_vencimiento',
         'nmro_cliente', 'user_id', 'proveedor_id',
-        'residencia_id','tipo_cuenta_id',
+        'tipo_cuenta_id', 'residencia_id'
     ];
 
-    public function tieneProveedor ()
+    public function tieneProveedor()
     {
         return $this->belongsTo(Proveedor::class, 'proveedor_id');
     }

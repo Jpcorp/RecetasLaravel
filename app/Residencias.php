@@ -23,7 +23,7 @@ class Residencias extends Model
 
     public function residenciasToProveedor()
     {
-        return $this->hasMany(Proveedor::class);
+        return $this->hasMany(Proveedor::class, 'residencias_id');
     }
 
     public function registraCtasProveedores()

@@ -2125,74 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/elegirResidencia.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/elegirResidencia.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  //variable pasadas vu.js
-  props: ['inf'],
-  data: function data() {
-    return {
-      residencias: this.inf
-    };
-  },
-  methods: {
-    getResidencias: function getResidencias() {
-      var _this = this;
-
-      axios.get('/getAllResidencias').then(function (respuesta) {
-        //console.log(respuesta.data);
-        _this.residencias = respuesta.data;
-      })["catch"](function (error) {
-        alert(error);
-      });
-    },
-    buscarEstadoResultados: function buscarEstadoResultados() {
-      //ver el valor de un campo
-      //console.log(this.$el.value);
-      if (this.$el.value != 0) {
-        alert("ir a buscar lo elementos");
-        var params = {
-          id: this.$el.value
-        };
-        console.log(params.id);
-        axios.get('/getCtasPorPagarByMes/' + params.id).then(function (respuesta) {
-          console.log(respuesta.data);
-        })["catch"](function (error) {
-          if (error.response.status === 401) {
-            window.location = '/register';
-          }
-        }); //ios.get('/getCtasPorPagarByMes')
-      }
-
-      console.log('buscarEstadoResultados');
-    }
-  },
-  created: function created() {
-    this.getResidencias();
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/rut.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/rut.vue?vue&type=script&lang=js& ***!
@@ -70043,49 +69975,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/elegirResidencia.vue?vue&type=template&id=c8128f18&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/elegirResidencia.vue?vue&type=template&id=c8128f18& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "select",
-    {
-      staticClass: "form-control",
-      attrs: { required: true, id: "s_residencias", name: "s_residencias" },
-      on: { change: _vm.buscarEstadoResultados }
-    },
-    [
-      _c("option", { attrs: { value: "0" }, domProps: { selected: true } }, [
-        _vm._v("-- Seleccionar --")
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.residencias, function(row) {
-        return _c("option", { key: row.id, domProps: { value: row.id } }, [
-          _vm._v("\n            " + _vm._s(row.nombre))
-        ])
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/rut.vue?vue&type=template&id=0f3a0a16&":
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/rut.vue?vue&type=template&id=0f3a0a16& ***!
@@ -82416,8 +82305,8 @@ Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__["default"]);
 Vue.component('fecha-receta', __webpack_require__(/*! ./components/FechaReceta.vue */ "./resources/js/components/FechaReceta.vue")["default"]);
 Vue.component('eliminar-receta', __webpack_require__(/*! ./components/EliminarReceta.vue */ "./resources/js/components/EliminarReceta.vue")["default"]);
 Vue.component('like-buttom', __webpack_require__(/*! ./components/LikeButtom.vue */ "./resources/js/components/LikeButtom.vue")["default"]);
-Vue.component('input-rut', __webpack_require__(/*! ./components/rut.vue */ "./resources/js/components/rut.vue")["default"]);
-Vue.component('elegir-residencia', __webpack_require__(/*! ./components/elegirResidencia.vue */ "./resources/js/components/elegirResidencia.vue")["default"]);
+Vue.component('input-rut', __webpack_require__(/*! ./components/rut.vue */ "./resources/js/components/rut.vue")["default"]); //Vue.component('elegir-residencia', require('./components/ElegirResidencia.vue').default);
+
 Vue.component('eliminar-servicio', __webpack_require__(/*! ./components/EliminarServicio.vue */ "./resources/js/components/EliminarServicio.vue")["default"]);
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
 console.log(Vue.prototype);
@@ -82598,15 +82487,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/EliminarServicio.vue ***!
   \******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EliminarServicio_vue_vue_type_template_id_735ea582___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EliminarServicio.vue?vue&type=template&id=735ea582& */ "./resources/js/components/EliminarServicio.vue?vue&type=template&id=735ea582&");
 /* harmony import */ var _EliminarServicio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarServicio.vue?vue&type=script&lang=js& */ "./resources/js/components/EliminarServicio.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _EliminarServicio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _EliminarServicio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -82636,7 +82524,7 @@ component.options.__file = "resources/js/components/EliminarServicio.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/EliminarServicio.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82797,75 +82685,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeButtom_vue_vue_type_template_id_2a8e0e53___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LikeButtom_vue_vue_type_template_id_2a8e0e53___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/elegirResidencia.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/elegirResidencia.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _elegirResidencia_vue_vue_type_template_id_c8128f18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elegirResidencia.vue?vue&type=template&id=c8128f18& */ "./resources/js/components/elegirResidencia.vue?vue&type=template&id=c8128f18&");
-/* harmony import */ var _elegirResidencia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./elegirResidencia.vue?vue&type=script&lang=js& */ "./resources/js/components/elegirResidencia.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _elegirResidencia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _elegirResidencia_vue_vue_type_template_id_c8128f18___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _elegirResidencia_vue_vue_type_template_id_c8128f18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/elegirResidencia.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/elegirResidencia.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/elegirResidencia.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_elegirResidencia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./elegirResidencia.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/elegirResidencia.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_elegirResidencia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/elegirResidencia.vue?vue&type=template&id=c8128f18&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/elegirResidencia.vue?vue&type=template&id=c8128f18& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_elegirResidencia_vue_vue_type_template_id_c8128f18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./elegirResidencia.vue?vue&type=template&id=c8128f18& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/elegirResidencia.vue?vue&type=template&id=c8128f18&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_elegirResidencia_vue_vue_type_template_id_c8128f18___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_elegirResidencia_vue_vue_type_template_id_c8128f18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

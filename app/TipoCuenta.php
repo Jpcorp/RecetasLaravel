@@ -12,7 +12,7 @@ class TipoCuenta extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre', 'descripcion', 'created_at'
+        'nombre', 'descripcion', 'created_at', 'update_at'
     ];
 
     public function hasManyCtasProveedor()

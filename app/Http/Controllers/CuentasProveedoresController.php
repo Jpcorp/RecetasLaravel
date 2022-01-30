@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CuentasProveedoresController extends Controller
 {
-     //Function para proteger las acciones requieren autenticarse antes
-     public function __construct()
-     {
-         $this->middleware('auth', ['except' => ['create']]);
-     }
+    //Function para proteger las acciones requieren autenticarse antes
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,10 +24,10 @@ class CuentasProveedoresController extends Controller
      */
     public function index()
     {
+
         $usuario = auth()->user();
         $cuentas = CuentasProveedores::where('user_id', $usuario->id)->paginate(4);
         return view('cuentasProveedores.index')->with('cuentas', $cuentas);
-
     }
 
     /**
@@ -36,13 +37,12 @@ class CuentasProveedoresController extends Controller
      */
     public function create()
     {
-        //$residencias = Residencias::where(['id', 'nombre']);
+
         $residencias = Residencias::all(['id', 'nombre']);
         $proveedores = Proveedor::all(['id', 'nombre']);
         $tiposCuentas = TipoCuenta::all(['id', 'nombre']);
         return view('cuentasProveedores.create',
                         compact('residencias', 'proveedores', 'tiposCuentas'));
-
     }
 
     /**
@@ -151,7 +151,6 @@ class CuentasProveedoresController extends Controller
     public function destroy(CuentasProveedores $cuentasProveedores)
     {
         $cuentasProveedores->delete();
-
         return redirect()->action('DashboardController@index');
     }
 }
