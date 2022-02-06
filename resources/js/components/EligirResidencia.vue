@@ -23,8 +23,8 @@
         <h3>Servicio del mes: [Septiembre] </h3>
         <h4 class="text-success"><small>Tipo de Ctas : [Cuentas por Pagar] </small></h4>
 
-        <div class="col-12">
-            <table class="table table-hover table-scrite">
+        <div v-for="(grupo, idx) in matriz" :key="idx" v-bind:value="grupo" class="col-12">
+            <table v-for="(value, llave) in grupo " :key="llave" class="table table-hover table-scrite">
                 <thead>
                     <tr>
                         <td width="10px">Identificador</td>
@@ -37,12 +37,13 @@
                         <td>Ver detalle de pagos</td>
                     </tr>
                 </thead>
-                    <tbody class="justify-content-center">
-                    <tr>
-                        <td>Enel</td>
-                        <td>(56) 223175869</td>
-                        <td>20 de cada mes</td>
-                        <td>Servicio de electricidad</td>
+                <tbody v-for="(objects)  in value " :key="objects" class="ustify-content-center">
+                    <tr v-for="object  in objects.CuentaProveedor" :key="object.id">
+                        <td class="text-center">{{ object.id }}</td>
+                        <td><small v-text=" objects.Proveedor.nombre " /></td>
+                        <td><small v-text=" objects.Proveedor.tlf " /></td>
+                        <td><small v-text=" object.dia_pago" /> de cada mes</td>
+                        <td><small v-text=" object.nombre" /></td>
                         <td>$ 14.990 </td>
                         <td><a href="#" class="btn btn-dark b-block w-100 mb-2">Gestionar</a></td>
                         <td><a href="#" class="btn btn-success b-block w-100 mb-2">Ir</a></td>
@@ -58,9 +59,8 @@
         </div>
     </div>
 </form>
-
-
 </template>
+
 <script>
 export default {
    //variable pasadas vue.js
@@ -70,7 +70,7 @@ export default {
            residencias : this.inf,
            matriz: [
                {
-                "1":[
+                "vtrcom":[
                     {
                         "CuentaProveedor":[
                             {
@@ -87,7 +87,7 @@ export default {
                             updated_at:"2021-09-22T16:52:42.000000Z"
                             }
                         ],
-                        "1":{
+                        "Proveedor":{
                             id:"1",
                             nombre:"Vtr.com",
                             rut:"76.114.143-0",
@@ -104,7 +104,7 @@ export default {
                         }
                     }
                 ],
-                "2":[
+                "empresa-lipigas-sa":[
                     {
                         "CuentaProveedor":[
                             {
@@ -121,7 +121,7 @@ export default {
                             updated_at:"2021-09-22T16:57:29.000000Z"
                             }
                         ],
-                        "2":{
+                        "Proveedor":{
                             id:"2",
                             nombre:"Empresa Lipigas SA",
                             rut:"96.928.510-K",
@@ -152,6 +152,7 @@ export default {
             .catch(error => {
                 alert(error);
             });
+            console.log(this.matriz);
        },
        buscarEstadoResultados: function() {
            //elegir el elemento del dom

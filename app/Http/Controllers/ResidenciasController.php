@@ -70,7 +70,7 @@ class ResidenciasController extends Controller
         $proveedores = $residencia->residenciasToProveedor()->get();
 
         foreach($proveedores as $proveedor) {
-            $proveedorCtaXpagar[$proveedor->id] [] =
+            $proveedorCtaXpagar[ Str::slug($proveedor->nombre) ] [] =
             Arr::add(
                 ['CuentaProveedor'
                     => CuentasProveedores::whereBetween('dia_pago', [$firstDayMonth, $lastDayMonth])
@@ -80,8 +80,6 @@ class ResidenciasController extends Controller
                             ->where('user_id', $usuario->id)->get()
                 ],
                 'Proveedor', $proveedor);
-
-
         }
         return $proveedorCtaXpagar;
     }

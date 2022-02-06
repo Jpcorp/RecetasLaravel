@@ -11,9 +11,6 @@
 
 @section('content')
 
-
-        <!--elegir-residencia inf="{{ $residencias }}"></elegir-residencia>
-
-
+        <elegir-residencia inf="{{ $residencias }}"></elegir-residencia>
 
 @endsection

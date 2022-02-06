@@ -17,10 +17,10 @@ class CuentasProveedoresSeeder extends Seeder
     public function run()
     {
          //
-         $residencia = Residencias::where('residencia_id', 1)->first();
-         $user = User::where('user_id', 2)->first();
-         $proveedor = Proveedor::where('user_id', 2)->first();
-         $tipocta = TipoCuenta::where('tipo_cuenta_id', 1)->first();
+         $residencia = Residencias::where('id', 1)->first();
+         $user = User::where('id', 2)->first();
+         $proveedor = Proveedor::where('id', 1)->first();
+         $tipocta = TipoCuenta::where('id', 1)->first();
 
          $ctas = CuentasProveedores::create([
              'nombre' => 'Servicio de internet',

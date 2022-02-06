@@ -37,7 +37,7 @@ Vue.component('fecha-receta', require('./components/FechaReceta.vue').default);
 Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').default);
 Vue.component('like-buttom', require('./components/LikeButtom.vue').default);
 Vue.component('input-rut', require('./components/rut.vue').default);
-//Vue.component('elegir-residencia', require('./components/ElegirResidencia.vue').default);
+Vue.component('elegir-residencia', require('./components/eligirResidencia.vue').default);
 Vue.component('eliminar-servicio', require('./components/EliminarServicio.vue').default);
 
 
