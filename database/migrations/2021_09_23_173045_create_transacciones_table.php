@@ -15,9 +15,11 @@ class CreateTransaccionesTable extends Migration
     {
         Schema::create('transacciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->date('ano');
-            $table->integer('rectificatoria');
+            $table->foreignId('user_id')->references('id')->on('users')->comment('El usuario que crea la residencia');
+            $table->foreignId('cuenta_proveedores_id')->references('id')->on('cuentas_proveedores')->comment('Cuenta proveedor de la transaccion');
+            $table->date('fecha_pago');
+            $table->integer('monto');
+            $table->string('rectificatoria')->nullable();
             $table->timestamps();
         });
     }
